@@ -38,7 +38,7 @@ class NewsList(Resource):
     #     todos[todo_id] = request.form['data']
     #     return {todo_id: todos[todo_id]}
 
-api.add_resource(NewsList, '/news/<string:date>')
+api.add_resource(NewsList, '/news/<string:date_str>')
 
 def initialize():
     # db_connection = sql.connect('flask_learn.db')
