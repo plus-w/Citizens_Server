@@ -11,7 +11,7 @@ def network_format(data: dict):
     format_data['data'] = [data]
     return format_data
 
-def network_format(data: list[dict]):
+def network_format(data: List[dict]):
     format_data = {'error_code': 0, 'error_message': '', 'data': data}
     return format_data
 
