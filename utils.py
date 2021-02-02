@@ -34,8 +34,8 @@ def date_yesterday(date):
     return str(datetime.date(y, m, d))
 
 def date_compare(date_a, date_b):
-    y_a, m_a, d_a = date_a.strip().split()
-    y_b, m_b, d_b = date_b.strip().split()
+    y_a, m_a, d_a = date_a.strip().split('-')
+    y_b, m_b, d_b = date_b.strip().split('-')
 
     if y_a < y_b: return '<'
     elif y_a > y_b: return '>'
