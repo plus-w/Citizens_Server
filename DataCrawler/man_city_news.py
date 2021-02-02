@@ -53,4 +53,4 @@ def get_news_list_by_date(date):
         news_list.append({'id':news['filename'], 'date': date_str, 'title': title, 'url': url, 'mobile_url': mobile_url, 'cover_img_url': cover_img_url})
     return news_list   
 
-get_news_list_by_date({'year': '2021', 'month': '01', 'day': '27'})
+# get_news_list_by_date({'year': '2021', 'month': '01', 'day': '27'})
