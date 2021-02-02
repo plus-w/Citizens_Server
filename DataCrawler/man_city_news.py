@@ -22,8 +22,8 @@ def get_url_content(url):
 # news_data = tree.select('#boxlist > div.dataList > ul:nth-child(5) > li > span.articleTitle > a')
 # labels_data = tree.select('#boxlist > div.dataList > ul:nth-child(5) > li')
 
-def get_mobile_news_url(date, index):
-    pattern = 'https://m.zhibo8.cc/news/web/zuqiu/{}/{}.htm'.format(date, index)
+def get_mobile_news_url(date_str, index):
+    pattern = 'https://m.zhibo8.cc/news/web/zuqiu/{}/{}.htm'.format(date_str, index)
     return pattern
 
 def get_news_list_url_by_date(date):

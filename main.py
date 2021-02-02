@@ -22,6 +22,7 @@ class NewsList(Resource):
         
         compare = date_compare(date, str(datetime.date.today()))
         news_list = []
+        date = {'year': date[:4], 'month': date[5:7], 'day': date['8:10']}
         if compare == '=' or compare == '>':
             news_list = network_format(get_news_list_by_date(date))
         else:
