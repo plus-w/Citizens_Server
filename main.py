@@ -18,7 +18,7 @@ class NewsList(Resource):
         
         # validation 
         msg = check_date(date)
-        if msg['error'] != 0: return {'error': msg['error_code'], 'error_message': msg['error_message']}
+        if msg['error_code'] != 0: return msg
         
         compare = date_compare(date, str(datetime.date.today()))
         news_list = []
