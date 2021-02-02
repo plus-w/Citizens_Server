@@ -9,7 +9,7 @@ url = 'https://news.zhibo8.cc/zuqiu/more.htm'
 
 def get_url_content(url):
     strhtml = requests.get(url)        #Get方式获取网页数据
-    print(strhtml.encoding)
+    # print(strhtml.encoding)
     strhtml = strhtml.text.encode('iso-8859-1').decode('unicode_escape')
     # print(strhtml.apparent_encoding)
     # print(requests.utils.get_encodings_from_content(strhtml.text))

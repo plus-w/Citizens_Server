@@ -27,10 +27,9 @@ class NewsList(Resource):
             news_list = network_format(get_news_list_by_date(date))
         else:
             for i in range(3):
-                yesterday = date_yesterday(date_str)
-                date = {'year': yesterday[:4], 'month': yesterday[5:7], 'day': yesterday[8:10]}
-                news_list.append(get_news_list_by_date(date))
-                date_str = yesterday
+                date = {'year': date_str[:4], 'month': date_str[5:7], 'day': date_str[8:10]}
+                news_list += get_news_list_by_date(date)
+                date_str = date_yesterday(date_str)
             news_list = network_format(news_list)
         return news_list
     
