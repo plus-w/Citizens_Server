@@ -3,7 +3,7 @@ from flask import Flask, request
 from flask_restful import Api, Resource
 import datetime
 import sqlite3 as sql
-from DataCrawler import get_news_list_by_date
+from .DataCrawler import get_news_list_by_date
 
 app = Flask(__name__)
 api = Api(app)
