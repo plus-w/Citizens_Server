@@ -11,25 +11,26 @@ api = Api(app)
 db = 'citizens.db'
 
 class NewsList(Resource):
-    def get(self, date):
+    def get(self, date_str):
         # procedures:
         # 1. if date == today or date > today, go to zhibo8.cc to find latest news and store to db
         # 2. if date < today, go to db to get news of 3 days before that day
         
         # validation 
-        msg = check_date(date)
+        msg = check_date(date_str)
         if msg['error_code'] != 0: return msg
         
-        compare = date_compare(date, str(datetime.date.today()))
+        compare = date_compare(date_str, str(datetime.date.today()))
         news_list = []
-        date = {'year': date[:4], 'month': date[5:7], 'day': date[8:10]}
+        date = {'year': date_str[:4], 'month': date_str[5:7], 'day': date_str[8:10]}
         if compare == '=' or compare == '>':
             news_list = network_format(get_news_list_by_date(date))
         else:
             for i in range(3):
-                yesterday = date_yesterday(date)
-                news_list.append(get_news_list_by_date(yesterday))
-                date = yesterday
+                yesterday = date_yesterday(date_str)
+                date = {'year': yesterday[:4], 'month': yesterday[5:7], 'day': yesterday[8:10]}
+                news_list.append(get_news_list_by_date(date))
+                date_str = yesterday
             news_list = network_format(news_list)
         return news_list
     
