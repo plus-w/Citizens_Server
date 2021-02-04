@@ -52,4 +52,4 @@ if __name__ == "__main__":
     # initialize
     # find news from 2021.01.01 and store to db
 
-    app.run(debug=False, host=host, port=port)
+    app.run(debug=True, host=host, port=port)
