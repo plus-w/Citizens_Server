@@ -47,7 +47,7 @@ def get_match_schedule(team_id: str):
         match_filtered['date'] = match['s_date']
         match_filtered['time'] = match['s_time']
 
-        if match['league'] == '欧冠' and match['type'] == '':
+        if match['league'] == '欧冠' and match['type'] == '' and match['round'] != None:
             match_filtered['type'] = '小组赛'
 
         result.append(match_filtered)
