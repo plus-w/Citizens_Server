@@ -8,7 +8,7 @@ c.execute('''CREATE TABLE NEWS
        TITLE           TEXT    NOT NULL,
        URL            TEXT     NOT NULL,
        M_URL          TEXT     NOT NULL,
-       IMG_URL        TEXT,
+       IMG_URL        TEXT     NOT NULL,
        DATE        CHAR(10)    NOT NULL);''')
 conn.commit()
 conn.close()

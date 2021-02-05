@@ -1,3 +1,4 @@
+from DataCrawler.match_schedule import get_match_schedule
 from utils import check_date, date_compare, date_yesterday, network_format
 from flask import Flask, request
 from flask_restful import Api, Resource
@@ -10,7 +11,7 @@ api = Api(app)
 
 db = 'citizens.db'
 
-class NewsList(Resource):
+class NewsListByDate(Resource):
     def get(self, date_str):
         # procedures:
         # 1. if date == today or date > today, go to zhibo8.cc to find latest news and store to db
@@ -37,10 +38,41 @@ class NewsList(Resource):
     #     todos[todo_id] = request.form['data']
     #     return {todo_id: todos[todo_id]}
 
-api.add_resource(NewsList, '/news/<string:date_str>')
+# class NewsListByPage(Resource):
+#     def get(self, page_num):
+#         # procedures:
+#         # 1. if page_num < 0, return error
+#         # 2. if page_num 
+        
+#         # validation 
+#         msg = check_date(date_str)
+#         if msg['error_code'] != 0: return msg
+        
+#         compare = date_compare(date_str, str(datetime.date.today()))
+#         news_list = []
+#         date = {'year': date_str[:4], 'month': date_str[5:7], 'day': date_str[8:10]}
+#         if compare == '=' or compare == '>':
+#             news_list = network_format(get_news_list_by_date(date))
+#         else:
+#             for i in range(3):
+#                 date = {'year': date_str[:4], 'month': date_str[5:7], 'day': date_str[8:10]}
+#                 news_list += get_news_list_by_date(date)
+#                 date_str = date_yesterday(date_str)
+#             news_list = network_format(news_list)
+#         return news_list
+
+class MatchSchedule(Resource):
+    def get(self, team_id):
+        if not team_id.isdigit() or int(team_id) < 36 or int(team_id) > 478:
+            return {'error_code': 1, 'error_message': "Invalid team id", 'data':[]}
+
+        return network_format(get_match_schedule(team_id))
+
+api.add_resource(MatchSchedule, '/match/<string:team_id>')
+api.add_resource(NewsListByDate, '/news/<string:date_str>')
 
 def initialize():
-    # db_connection = sql.connect('flask_learn.db')
+    db_connection = sql.connect('citizens.db')
     return True
 
 
