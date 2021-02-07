@@ -34,8 +34,10 @@ def get_match_schedule(team_id: str):
         match_filtered['match_id'] = match['id']
         match_filtered['season'] = match['season_display']  # 2020/2021
         match_filtered['league'] = match['league']  # 欧冠，英超，联赛杯，足总杯
+
         match_filtered['type'] = match['type']  # 1/4决赛
         match_filtered['round'] = match['round']  # 20
+        
         match_filtered['home_id'] = match['home_id']
         match_filtered['home_name'] = match['home']
         match_filtered['home_logo_url'] = match['home_logo']
