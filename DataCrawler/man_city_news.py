@@ -34,7 +34,9 @@ def get_news_list_url_by_date(date):
 
 def get_news_list_json(url):
     tree = BeautifulSoup(get_url_content(url), 'lxml')
-    data = re.sub(r'("[\s\w]*)"([\s\w]*")',r"\1\'\2'", tree.get_text())
+    # data = re.sub(r'("[\s\w]*)"([\s\w]*")"',r"\1\'\2", tree.get_text())
+    # print(data)
+    data = tree.get_text()
     print(data)
     news_list_data = json.loads(data)
     return news_list_data
