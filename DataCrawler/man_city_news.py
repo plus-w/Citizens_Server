@@ -2,6 +2,7 @@ import requests
 import pdb
 import datetime
 import json
+import re
 from bs4 import BeautifulSoup
 
 
@@ -33,8 +34,8 @@ def get_news_list_url_by_date(date):
 
 def get_news_list_json(url):
     tree = BeautifulSoup(get_url_content(url), 'lxml')
-    print(tree.get_text())
-    news_list_data = json.loads(tree.get_text())
+    data = re.sub(r'("[\s\w]*)"([\s\w]*")',r"\1\'\2", tree.get_text())
+    news_list_data = json.loads(data)
     return news_list_data
 
 def get_news_list_by_date(date):
