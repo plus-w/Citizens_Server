@@ -107,7 +107,7 @@ def get_all_competition_statistics():
     tree = BeautifulSoup(strhtml, 'lxml')
     
     return {
-        'team': {}, 'player': get_player_statistics(tree, selector, all_statistics_td_column_index)} 
+        'team': [], 'player': get_player_statistics(tree, selector, all_statistics_td_column_index)} 
 
 def get_epl_statistics():
     url =  'https://fbref.com/en/squads/b8fd03ef/2020-2021/s10728/Manchester-City-Stats-Premier-League'
