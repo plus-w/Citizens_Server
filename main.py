@@ -1,3 +1,4 @@
+from DataCrawler.statistics import get_all_competition_statistics, get_efl_statistics, get_epl_statistics, get_fa_statistics, get_ucl_statistics
 from DataCrawler.match_schedule import get_match_schedule
 from utils import check_date, date_compare, date_yesterday, network_format
 from flask import Flask, request
@@ -10,6 +11,25 @@ app = Flask(__name__)
 api = Api(app)
 
 db = 'citizens.db'
+
+
+class Statistics(Resource):
+
+    def get(self, type_str):
+        if type_str not in ['all', 'epl', 'ucl', 'fa', 'efl']:
+            return {'error_code': 1, 'error_message': "Invalid league type."}
+        
+        if type_str == 'epl':
+            return network_format(get_epl_statistics())
+        elif type_str == 'ucl':
+            return network_format(get_ucl_statistics())
+        elif type_str == 'fa':
+            return network_format(get_fa_statistics())
+        elif type_str == 'efl':
+            return network_format(get_efl_statistics())
+        else:
+            return network_format(get_all_competition_statistics())
+
 
 class NewsListByDate(Resource):
     def get(self, date_str):
@@ -70,6 +90,7 @@ class MatchSchedule(Resource):
 
 api.add_resource(MatchSchedule, '/match/<string:team_id>')
 api.add_resource(NewsListByDate, '/news/<string:date_str>')
+api.add_resource(Statistics, '/statistics/<string:type_str>')
 
 def initialize():
     db_connection = sql.connect('citizens.db')
