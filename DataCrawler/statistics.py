@@ -149,6 +149,14 @@ def get_efl_statistics():
         'team': get_team_league_statistics(tree, team_selector, efl_statistics_td_column_index), 
         'player': get_player_statistics(tree, player_selector, efl_statistics_td_column_index)}
 
+def get_statistics():
+    all_competition_stats = get_all_competition_statistics()
+    epl_stats = get_epl_statistics()
+    ucl_stats = get_ucl_statistics()
+    fa_stats = get_fa_statistics()
+    efl_stats = get_efl_statistics()
+    return {"all": all_competition_stats, "epl": epl_stats, "ucl": ucl_stats, "fa": fa_stats, "efl": efl_stats}
+
 # if __name__ == "__main__":
 #     all_data = get_all_competition_statistics()
 #     epl_data = get_epl_statistics()
