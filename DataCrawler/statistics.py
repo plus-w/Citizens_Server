@@ -55,7 +55,7 @@ def get_player_statistics(bs4_parse_tree, selector, statistics_td_column_index):
     for index, tr in enumerate(tree.find_all('tr')):
         data = {}
         player_name_en = tr.find('th').find('a').contents[0]
-        data['name'] = player_name_en_dict.get(player_name_en, 'null')[0]
+        data['name'] = player_name_en_dict.get(player_name_en, ['null'])[0]
         if data['name'] == 'null':
             continue
         tds = tr.find_all('td')
