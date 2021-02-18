@@ -36,7 +36,7 @@ def get_team_league_statistics(bs4_parse_tree, selector, statistics_td_column_in
         key_idx = statistics_td_column_index[key]
         opponent_total[key] = tds[key_idx].contents[0] if len(tds[key_idx].contents) != 0 else '-'
     
-    return squad_total, opponent_total
+    return [squad_total, opponent_total]
 
 def get_player_statistics(bs4_parse_tree, selector, statistics_td_column_index):
     
