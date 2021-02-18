@@ -25,13 +25,13 @@ def get_team_league_statistics(bs4_parse_tree, selector, statistics_td_column_in
 
     data_key_list = [key for key in data_key_list if key in statistics_td_column_index]
 
-    squad_total = {'name': "全队平均"}
+    squad_total = {'name': "全队"}
     for key in data_key_list:
         key_idx = statistics_td_column_index[key]
         squad_total[key] = tds[key_idx].contents[0] if len(tds[key_idx].contents) != 0 else '-'
 
     tds = trs[1].find_all('td')
-    opponent_total = {'name': "对手平均"}
+    opponent_total = {'name': "对手"}
     for key in data_key_list:
         key_idx = statistics_td_column_index[key]
         opponent_total[key] = tds[key_idx].contents[0] if len(tds[key_idx].contents) != 0 else '-'
