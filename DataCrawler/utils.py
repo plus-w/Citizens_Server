@@ -68,11 +68,12 @@ epl_statistics_td_column_index = {
     'xg': 19,
     'npxg': 20,
     'xa': 21,
-    'xa_per90': 22,
+    'npxg_xa': 22,
     'xg_per90': 23,
-    'xg_xa_per90': 24,
-    'npxg_per90': 25,
-    'npxg_xa_per90': 26
+    'xa_per90': 24,
+    'xg_xa_per90': 25,
+    'npxg_per90': 26,
+    'npxg_xa_per90': 27
 }
 
 
@@ -99,11 +100,12 @@ ucl_statistics_td_column_index = {
     'xg': 19,
     'npxg': 20,
     'xa': 21,
-    'xa_per90': 22,
+    'npxg_xa': 22,
     'xg_per90': 23,
-    'xg_xa_per90': 24,
-    'npxg_per90': 25,
-    'npxg_xa_per90': 26
+    'xa_per90': 24,
+    'xg_xa_per90': 25,
+    'npxg_per90': 26,
+    'npxg_xa_per90': 27
 }
 
 all_statistics_td_column_index = {
@@ -129,11 +131,12 @@ all_statistics_td_column_index = {
     'xg': 19,
     'npxg': 20,
     'xa': 21,
-    'xa_per90': 22,
+    'npxg_xa': 22,
     'xg_per90': 23,
-    'xg_xa_per90': 24,
-    'npxg_per90': 25,
-    'npxg_xa_per90': 26
+    'xa_per90': 24,
+    'xg_xa_per90': 25,
+    'npxg_per90': 26,
+    'npxg_xa_per90': 27
 }
 
 player_nationality_en_dict = {
