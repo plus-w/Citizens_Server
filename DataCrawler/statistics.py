@@ -102,10 +102,10 @@ def get_player_statistics(bs4_parse_tree, selector, statistics_td_column_index):
 
 def get_all_competition_statistics():
     url =  'https://fbref.com/en/squads/b8fd03ef/2020-2021/all_comps/Manchester-City-Stats-All-Competitions'
-    selector = '#stats_standard_ks_combined > tbody'
+    selector = '#stats_standard_combined > tbody'
     strhtml = requests.get(url).text
     tree = BeautifulSoup(strhtml, 'lxml')
-    
+    #stats_standard_combined > tbody
     return {
         'team': [], 'player': get_player_statistics(tree, selector, all_statistics_td_column_index)} 
 
