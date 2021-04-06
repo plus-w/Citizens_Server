@@ -17,11 +17,13 @@ class Statistics(Resource):
         return network_format(get_statistics())
 
 class NewsListByDate(Resource):
-    def get(self, date_str):
+    def post(self, date_str):
         # procedures:
         # 1. if date == today or date > today, go to zhibo8.cc to find latest news and store to db
         # 2. if date < today, go to db to get news of 3 days before that day
         
+        labels = request.form['labels'].split(',')
+
         # validation 
         msg = check_date(date_str)
         if msg['error_code'] != 0: return msg
@@ -30,11 +32,11 @@ class NewsListByDate(Resource):
         news_list = []
         date = {'year': date_str[:4], 'month': date_str[5:7], 'day': date_str[8:10]}
         if compare == '=' or compare == '>':
-            news_list = network_format(get_news_list_by_date(date))
+            news_list = network_format(get_news_list_by_date(date, labels))
         else:
             for i in range(3):
                 date = {'year': date_str[:4], 'month': date_str[5:7], 'day': date_str[8:10]}
-                news_list += get_news_list_by_date(date)
+                news_list += get_news_list_by_date(date, labels)
                 date_str = date_yesterday(date_str)
             news_list = network_format(news_list)
         return news_list

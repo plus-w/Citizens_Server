@@ -39,15 +39,19 @@ def get_news_list_json(url):
     news_list_data = json.loads(data)
     return news_list_data
 
-def get_news_list_by_date(date):
+def get_news_list_by_date(date, labels):
     news_list_url = get_news_list_url_by_date(date)
     news_list_data = get_news_list_json(news_list_url)
 
     news_list = []
     date_str = news_list_data['date']
     for news in news_list_data['video_arr']:
-        labels = news['lable']
-        if '曼城' not in labels:
+        # labels = news['lable']
+        contain_labels = False
+        for label in labels:
+            if label in news['lable']:
+                contain_labels = True
+        if not contain_labels:
             continue
         title = news['title']
         url = 'https://news.zhibo8.cc' + news['url']
