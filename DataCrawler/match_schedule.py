@@ -48,6 +48,7 @@ def get_match_schedule(team_id: str):
         match_filtered['away_score'] = match['away_score']
         match_filtered['date'] = match['s_date']
         match_filtered['time'] = match['s_time']
+        match_filtered['match_live_url'] = 'm.zhibo8.cc' + match['neiye_url']
 
         if match['league'] == '欧冠' and match['type'] == '' and match['round'] != None:
             match_filtered['type'] = '小组赛'
