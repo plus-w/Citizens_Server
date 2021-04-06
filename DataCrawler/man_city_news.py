@@ -66,7 +66,8 @@ def get_news_list_by_date(date, labels):
                 'mobile_url': mobile_url, 
                 'cover_img_url': cover_img_url,
                 'news_create_time': news['createtime'],
-                'news_update_time': news['updatetime']})
-    return news_list   
+                'news_update_time': news['updatetime'],
+                'labels': news['lable']})
+    return news_list
 
 # get_news_list_by_date({'year': '2021', 'month': '01', 'day': '27'})
