@@ -53,7 +53,16 @@ def get_news_list_by_date(date):
         url = 'https://news.zhibo8.cc' + news['url']
         cover_img_url = news['thumbnail'].replace('_thumb', '')
         mobile_url = get_mobile_news_url(date_str, news['filename'])
-        news_list.append({'id':news['filename'], 'date': date_str, 'title': title, 'url': url, 'mobile_url': mobile_url, 'cover_img_url': cover_img_url})
+        news_list.append(
+            {
+                'id':news['filename'], 
+                'date': date_str, 
+                'title': title, 
+                'url': url, 
+                'mobile_url': mobile_url, 
+                'cover_img_url': cover_img_url,
+                'news_create_time': news['createtime'],
+                'news_update_time': news['updatetime']})
     return news_list   
 
 # get_news_list_by_date({'year': '2021', 'month': '01', 'day': '27'})
