@@ -87,7 +87,7 @@ def initialize():
 
 if __name__ == "__main__":
     host = '0.0.0.0'
-    port = 6000
+    port = 4000
 
     # initialize
     # find news from 2021.01.01 and store to db
