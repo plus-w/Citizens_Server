@@ -26,7 +26,8 @@ def get_match_schedule(team_id: str):
     url = base_url + team_id
     match_data_json = json.loads(BeautifulSoup(get_url_content(url), 'lxml').get_text())
     if match_data_json['status'] != 1:
-        return {'error_code': 1, 'error_message': 'Query failed'}
+        return {'error_code': 1, 'error_message': str(match_data_json)}
+
     match_item_list = match_data_json['data']
     result = []
     for match in match_item_list:
